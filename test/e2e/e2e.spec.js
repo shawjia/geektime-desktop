@@ -36,7 +36,7 @@ describe('main window', function spec() {
     await client.waitUntilWindowLoaded();
     await delay(500);
     const title = await browserWindow.getTitle();
-    expect(title).toBe('Hello Electron React!');
+    expect(title).toBe('极客时间桌面版');
   });
 
   it("should haven't any logs in console of main window", async () => {
