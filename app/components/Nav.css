@@ -1,0 +1,14 @@
+.nav {
+  position: fixed !important;
+  left: 0;
+  height: 100%;
+  overflow: auto;
+}
+
+.nav__setting {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  font-size: 20px;
+}

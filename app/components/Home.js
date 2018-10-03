@@ -1,13 +1,28 @@
-// @flow
 import React, { Component } from 'react';
-import { Spin } from 'antd';
+import { Layout, Spin } from 'antd';
+import Nav from './Nav';
+import Setting from './Setting';
+
+import './Home.css';
+
+const { Content } = Layout;
 
 export default class Home extends Component {
+
   render() {
     return (
-      <div>
-        <Spin size="large" />
-      </div>
+      <Layout>
+        <Nav />
+
+        <Layout style={{ marginLeft: 200 }}>
+          <Content>
+            <Spin size="large" />
+          </Content>
+        </Layout>
+
+        <Setting />
+
+      </Layout >
     );
   }
 }
