@@ -10,14 +10,22 @@ const { Item: MenuItem } = Menu;
 class Nav extends Component {
 
   async componentDidMount() {
-    const {fetchProducts} = this.props;
+    const { fetchProducts, fetchArticles, menus } = this.props;
 
     await fetchProducts();
+    await fetchArticles(menus[0].cid);
+  }
+
+  setCid = ({key: cid}) => {
+    const {  fetchArticles } = this.props;
+
+    fetchArticles(+cid);
   }
 
   render() {
 
     const { toggleShow, menus } = this.props;
+    const selected = `${menus[0].cid}`;
 
     // 专栏
     // 视频课
@@ -26,9 +34,9 @@ class Nav extends Component {
     return (
       <Sider className={styles.nav} >
 
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={[`${menus[0].cid}`]}>
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={[selected]}>
           {menus.map(column =>
-            <MenuItem key={column.cid}>
+            <MenuItem key={column.cid} onClick={this.setCid}>
               <Icon type="book" />
               <span>{column.title}</span>
             </MenuItem>
@@ -51,8 +59,9 @@ const mapState = state => ({
 const mapDispatch = ({
   setting: { toggleShow, },
   products: { fetchProducts, },
+  articles: { fetchArticles, },
 }) => ({
-  toggleShow, fetchProducts
+  toggleShow, fetchProducts, fetchArticles
 });
 
 export default connect(mapState, mapDispatch)(Nav);

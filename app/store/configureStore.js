@@ -5,7 +5,7 @@ import { init } from "@rematch/core";
 import rootReducer from '../reducers';
 import setting from '../models/setting';
 import products from '../models/products';
-
+import articles from '../models/articles';
 
 const history = createHashHistory();
 const router = routerMiddleware(history);
@@ -15,6 +15,7 @@ function configureStore() {
     models: {
       setting,
       products,
+      articles,
     },
     redux: {
       reducers: rootReducer,

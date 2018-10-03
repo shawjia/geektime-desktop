@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Layout, Spin } from 'antd';
 import Nav from './Nav';
 import Setting from './Setting';
+import Articles from './Articles';
 
 import './Home.css';
 
@@ -14,9 +15,9 @@ export default class Home extends Component {
       <Layout>
         <Nav />
 
-        <Layout style={{ marginLeft: 200 }}>
+        <Layout style={{ marginLeft: 200, padding: 10 }}>
           <Content>
-            <Spin size="large" />
+            <Articles />
           </Content>
         </Layout>
 
