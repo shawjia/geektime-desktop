@@ -6,18 +6,17 @@ class Articles extends Component {
 
   render() {
 
-    const { articles } = this.props;
+    const { articles, fetchArticle } = this.props;
 
     return (
       <List
         itemLayout="horizontal"
         dataSource={articles}
         renderItem={item => (
-          <List.Item>
+          <List.Item onClick={() => fetchArticle(item.id)}>
             <List.Item.Meta
               avatar={<Avatar src={item.article_cover} />}
               title={item.article_title}
-              description={item.article_summary}
             />
           </List.Item>
         )}
@@ -30,4 +29,10 @@ const mapState = state => ({
   articles: state.articles.articles,
 });
 
-export default connect(mapState, null)(Articles);
+const mapDispatch = ({
+  article: { fetchArticle, },
+}) => ({
+  fetchArticle
+});
+
+export default connect(mapState, mapDispatch)(Articles);
