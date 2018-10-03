@@ -7,12 +7,17 @@ import styles from './Nav.css';
 const { Sider } = Layout;
 const { Item: MenuItem } = Menu;
 
-
 class Nav extends Component {
+
+  async componentDidMount() {
+    const {fetchProducts} = this.props;
+
+    await fetchProducts();
+  }
 
   render() {
 
-    const { toggleShow } = this.props;
+    const { toggleShow, menus } = this.props;
 
     // 专栏
     // 视频课
@@ -21,11 +26,13 @@ class Nav extends Component {
     return (
       <Sider className={styles.nav} >
 
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['120']}>
-          <MenuItem key="120">
-            <Icon type="home" />
-            <span>极客新闻</span>
-          </MenuItem>
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={[`${menus[0].cid}`]}>
+          {menus.map(column =>
+            <MenuItem key={column.cid}>
+              <Icon type="book" />
+              <span>{column.title}</span>
+            </MenuItem>
+          )}
         </Menu>
 
         <Icon type="setting" theme="outlined" className={styles.nav__setting}
@@ -37,10 +44,15 @@ class Nav extends Component {
   }
 };
 
+const mapState = state => ({
+  menus: state.products.products,
+});
+
 const mapDispatch = ({
-  setting: { toggleShow, fetchProducts }
+  setting: { toggleShow, },
+  products: { fetchProducts, },
 }) => ({
   toggleShow, fetchProducts
 });
 
-export default connect(null, mapDispatch)(Nav);
+export default connect(mapState, mapDispatch)(Nav);
