@@ -2,7 +2,7 @@ import { getGeektimeClient } from '../utils/index';
 
 const article = {
   state: {
-    article: '123',
+    article: null,
   },
 
   reducers: {

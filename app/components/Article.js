@@ -16,6 +16,9 @@ class Article extends Component {
     return (
       <div className={styles.article}>
         <h1>{article.article_title}</h1>
+        {article.article_cover !== '' &&
+          <img src={article.article_cover} alt="cover"/>
+        }
         {/* eslint-disable-next-line */}
         <div dangerouslySetInnerHTML={{__html: article.article_content}} />
       </div>

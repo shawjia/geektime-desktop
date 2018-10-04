@@ -1,8 +1,8 @@
 {
   "name": "geektime-desktop",
-  "productName": "electron-react-boilerplate",
-  "version": "0.1.0",
-  "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
+  "productName": "geektime-desktop",
+  "version": "1.0.0",
+  "description": "极客时间桌面版",
   "main": "./main.prod.js",
   "author": "shawjia <shawjia@gmail.com> (github.com/shawjia)",
   "scripts": {
