@@ -22,8 +22,10 @@ class Setting extends Component {
 
   saveSetting = () => {
     const { phone, password } = this.state;
+    const { saveSetting, fetchProducts } = this.props;
 
-    this.props.saveSetting({ phone, password });
+    saveSetting({ phone, password });
+    fetchProducts();
   }
 
   render() {
@@ -69,9 +71,10 @@ const mapState = state => ({
 });
 
 const mapDispatch = ({
-  setting: { toggleShow, saveSetting }
+  setting: { toggleShow, saveSetting },
+  products: { fetchProducts, },
 }) => ({
-  toggleShow, saveSetting
+  toggleShow, saveSetting, fetchProducts,
 });
 
 export default connect(mapState, mapDispatch)(Setting);
