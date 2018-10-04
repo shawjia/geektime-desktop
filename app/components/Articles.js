@@ -17,6 +17,7 @@ class Articles extends Component {
             <List.Item.Meta
               avatar={<Avatar src={item.article_cover} />}
               title={item.article_title}
+              style={{paddingLeft: 10, paddingRight: 10}}
             />
           </List.Item>
         )}

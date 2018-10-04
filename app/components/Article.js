@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import styles from './Article.css';
 
 class Article extends Component {
 
@@ -12,7 +13,7 @@ class Article extends Component {
     }
 
     return (
-      <div>
+      <div className={styles.article}>
         <h1>{article.article_title}</h1>
         {/* eslint-disable-next-line */}
         <div dangerouslySetInnerHTML={{__html: article.article_content}} />

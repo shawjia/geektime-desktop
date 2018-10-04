@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Layout, Row, Col } from 'antd';
+import { Layout } from 'antd';
 import Nav from './Nav';
 import Setting from './Setting';
 import Articles from './Articles';
 import Article from './Article';
 
-import './Home.css';
+import styles from './Home.css';
 
 const { Content, Sider } = Layout;
 
@@ -17,15 +17,11 @@ export default class Home extends Component {
         <Nav />
 
         <Layout style={{ marginLeft: 200 }}>
-          <Content>
-            <Row>
-              <Col span={6} style={{ borderRight: '1px solid #e8e8e8'}}>
-                <Articles style={{ padding: 10 }} />
-              </Col>
-              <Col span={18} style={{ padding: 10 }}>
-                <Article />
-              </Col>
-            </Row>
+          <Sider theme="light" width="300" className={styles.articles}>
+              <Articles />
+          </Sider>
+          <Content style={{ background: 'white' }}>
+            <Article style={{ padding: 10 }}/>
           </Content>
         </Layout>
 

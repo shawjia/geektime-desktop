@@ -1,0 +1,7 @@
+.articles {
+  border-right:1px solid #e8e8e8;
+  position: fixed !important;
+  left: 200px;
+  height: 100%;
+  overflow: auto;
+}

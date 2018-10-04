@@ -1,0 +1,11 @@
+.article {
+  padding: 10px;
+  background: white;
+  margin-left: 300px;
+}
+
+.article img {
+  max-width: 600px;
+  display: block;
+  margin: auto;
+}
