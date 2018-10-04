@@ -13,11 +13,13 @@ class Articles extends Component {
         itemLayout="horizontal"
         dataSource={articles}
         renderItem={item => (
-          <List.Item onClick={() => fetchArticle(item.id)}>
+          <List.Item onClick={() => fetchArticle(item.id)}
+            style={{ background: '#fafafa' }}
+          >
             <List.Item.Meta
               avatar={<Avatar src={item.article_cover} />}
               title={item.article_title}
-              style={{paddingLeft: 10, paddingRight: 10}}
+              style={{paddingLeft: 10, paddingRight: 10 }}
             />
           </List.Item>
         )}

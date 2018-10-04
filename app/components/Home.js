@@ -18,7 +18,7 @@ export default class Home extends Component {
 
         <Layout style={{ marginLeft: 200 }}>
           <Sider theme="light" width="300" className={styles.articles}>
-              <Articles />
+            <Articles />
           </Sider>
           <Content style={{ background: 'white' }}>
             <Article style={{ padding: 10 }}/>

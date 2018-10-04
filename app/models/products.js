@@ -1,14 +1,8 @@
-import Geektime from 'geektime';
-import Store from 'electron-store';
+import { getGeektimeClient } from '../utils/index';
 
 const defaultProducts = [
   {cid: 120, title: '极客新闻'},
 ];
-const store = new Store();
-
-function getClient() {
-  return new Geektime(store.get('phone'), store.get('password'));
-}
 
 const products = {
   state: {
@@ -27,7 +21,7 @@ const products = {
   effects: {
     async fetchProducts() {
 
-      const res = await getClient().products();
+      const res = await getGeektimeClient().products();
 
       // 暂时只处理 专栏1/微课3，忽略 视频课2/其他99
       const tmp = [

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import styles from './Article.css';
 
 class Article extends Component {

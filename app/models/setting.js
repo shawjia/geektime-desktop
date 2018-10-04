@@ -1,8 +1,6 @@
+import { getStore } from '../utils/index';
 
-import Store from 'electron-store';
-
-const store = new Store();
-
+const store = getStore();
 const initPhone = store.get('phone', '');
 const initPass = store.get('password', '');
 

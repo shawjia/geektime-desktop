@@ -1,5 +1,6 @@
 .articles {
   border-right:1px solid #e8e8e8;
+  background: #fafafa;
   position: fixed !important;
   left: 200px;
   height: 100%;

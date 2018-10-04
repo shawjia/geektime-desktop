@@ -1,11 +1,4 @@
-import Geektime from 'geektime';
-import Store from 'electron-store';
-
-const store = new Store();
-
-function getClient() {
-  return new Geektime(store.get('phone'), store.get('password'));
-}
+import { getGeektimeClient } from '../utils/index';
 
 const article = {
   state: {
@@ -23,7 +16,7 @@ const article = {
 
   effects: {
     async fetchArticle(id) {
-      const res = await getClient().article(id);
+      const res = await getGeektimeClient().article(id);
 
       this.setArticle(res);
     },
