@@ -8,6 +8,10 @@ class Articles extends Component {
 
     const { articles, fetchArticle, aid } = this.props;
 
+    if (articles.length === 0) {
+      return null;
+    }
+
     return (
       <List
         itemLayout="horizontal"

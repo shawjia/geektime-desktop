@@ -3,6 +3,7 @@
   left: 0;
   height: 100%;
   overflow: auto;
+  background: #001529;
 }
 
 .nav__setting {

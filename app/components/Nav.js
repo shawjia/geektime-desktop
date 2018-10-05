@@ -11,11 +11,17 @@ class Nav extends Component {
 
   async componentDidMount() {
     const { fetchProducts, fetchArticles } = this.props;
-
     await fetchProducts();
 
     const { menus } = this.props;
-    await fetchArticles(menus[0].cid);
+    if (menus.length) {
+      await fetchArticles(menus[0].cid);
+
+      const { articles, aid, fetchArticle } = this.props;
+      if (articles.length && aid === 0) {
+        fetchArticle(articles[0].id);
+      }
+    }
   }
 
   setCid = ({key: cid}) => {
@@ -27,19 +33,23 @@ class Nav extends Component {
   render() {
 
     const { toggleShow, menus } = this.props;
-    const selected = `${menus[0].cid}`;
+
+    const haveMenus = menus.length > 0;
+    const selected = haveMenus ? `${menus[0].cid}` : '0';
 
     return (
       <Sider className={styles.nav} >
 
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={[selected]}>
-          {menus.map(column =>
-            <MenuItem key={`${column.cid}`} onClick={this.setCid}>
-              <Icon type="book" />
-              <span>{column.title}</span>
-            </MenuItem>
-          )}
-        </Menu>
+        {menus.length > 0 &&
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={[selected]}>
+            {menus.map(column =>
+              <MenuItem key={`${column.cid}`} onClick={this.setCid}>
+                <Icon type="book" />
+                <span>{column.title}</span>
+              </MenuItem>
+            )}
+          </Menu>
+        }
 
         <Icon type="setting" theme="outlined" className={styles.nav__setting}
           onClick={toggleShow} />
@@ -52,14 +62,17 @@ class Nav extends Component {
 
 const mapState = state => ({
   menus: state.products.products,
+  articles: state.articles.articles,
+  aid: state.article.aid,
 });
 
 const mapDispatch = ({
   setting: { toggleShow, },
   products: { fetchProducts, },
   articles: { fetchArticles, },
+  article: { fetchArticle, },
 }) => ({
-  toggleShow, fetchProducts, fetchArticles
+  toggleShow, fetchProducts, fetchArticles, fetchArticle,
 });
 
 export default connect(mapState, mapDispatch)(Nav);

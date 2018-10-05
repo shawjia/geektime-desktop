@@ -1,12 +1,8 @@
 import { getGeektimeClient } from '../utils/index';
 
-const defaultProducts = [
-  {cid: 120, title: '极客新闻'},
-];
-
 const products = {
   state: {
-    products: defaultProducts,
+    products: [],
   },
 
   reducers: {
