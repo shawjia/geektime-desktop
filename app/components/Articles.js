@@ -6,7 +6,7 @@ class Articles extends Component {
 
   render() {
 
-    const { articles, fetchArticle } = this.props;
+    const { articles, fetchArticle, aid } = this.props;
 
     return (
       <List
@@ -14,7 +14,7 @@ class Articles extends Component {
         dataSource={articles}
         renderItem={item => (
           <List.Item onClick={() => fetchArticle(item.id)}
-            style={{ background: '#fafafa' }}
+            style={{ background: aid === item.id ? 'white' : '#fafafa' }}
           >
             <List.Item.Meta
               avatar={<Avatar src={item.article_cover} />}
@@ -30,6 +30,7 @@ class Articles extends Component {
 
 const mapState = state => ({
   articles: state.articles.articles,
+  aid: state.article.aid,
 });
 
 const mapDispatch = ({

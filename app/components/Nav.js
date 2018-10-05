@@ -10,14 +10,16 @@ const { Item: MenuItem } = Menu;
 class Nav extends Component {
 
   async componentDidMount() {
-    const { fetchProducts, fetchArticles, menus } = this.props;
+    const { fetchProducts, fetchArticles } = this.props;
 
     await fetchProducts();
+
+    const { menus } = this.props;
     await fetchArticles(menus[0].cid);
   }
 
   setCid = ({key: cid}) => {
-    const {  fetchArticles } = this.props;
+    const { fetchArticles } = this.props;
 
     fetchArticles(+cid);
   }
@@ -27,16 +29,12 @@ class Nav extends Component {
     const { toggleShow, menus } = this.props;
     const selected = `${menus[0].cid}`;
 
-    // 专栏
-    // 视频课
-    // 微课
-
     return (
       <Sider className={styles.nav} >
 
         <Menu theme="dark" mode="inline" defaultSelectedKeys={[selected]}>
           {menus.map(column =>
-            <MenuItem key={column.cid} onClick={this.setCid}>
+            <MenuItem key={`${column.cid}`} onClick={this.setCid}>
               <Icon type="book" />
               <span>{column.title}</span>
             </MenuItem>
