@@ -40,10 +40,14 @@ class Nav extends Component {
     return (
       <Sider className={styles.nav} >
 
+        <p className={styles.nav__title}>已购专栏</p>
+
         {menus.length > 0 &&
           <Menu theme="dark" mode="inline" defaultSelectedKeys={[selected]}>
             {menus.map(column =>
-              <MenuItem key={`${column.cid}`} onClick={this.setCid}>
+              <MenuItem key={`${column.cid}`} onClick={this.setCid}
+                style={{lineHeight: 1.5, height: '150%'}}
+              >
                 <Icon type="book" />
                 <span>{column.title}</span>
               </MenuItem>
