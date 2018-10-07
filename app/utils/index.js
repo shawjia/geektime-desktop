@@ -10,7 +10,11 @@ function getStore() {
 function getGeektimeClient() {
   const store = getStore();
 
-  return new Geektime(store.get('phone'), store.get('password'));
+  return new Geektime(
+    store.get('country', 86),
+    store.get('phone'),
+    store.get('password')
+  );
 }
 
 export {
