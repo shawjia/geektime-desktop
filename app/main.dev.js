@@ -11,9 +11,13 @@
  * @flow
  */
 import { app, BrowserWindow } from 'electron';
+import { autoUpdater } from 'electron-updater';
 import MenuBuilder from './menu';
 
 let mainWindow = null;
+
+// unable to auto update on macOS without code siging
+autoUpdater.autoDownload = process.platform !== 'darwin';
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
@@ -78,6 +82,8 @@ app.on('ready', async () => {
       mainWindow.show();
       mainWindow.focus();
     }
+
+    autoUpdater.checkForUpdatesAndNotify();
   });
 
   mainWindow.on('closed', () => {
