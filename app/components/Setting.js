@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 
 class Setting extends Component {
   state = {
-    phone: this.props.phone,
-    password: this.props.password,
+    phone: this.props.phone, // eslint-disable-line
+    password: this.props.password, // eslint-disable-line
   }
 
   setPhone = (e) => {
