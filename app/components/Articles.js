@@ -10,8 +10,8 @@ class Articles extends Component {
     search: '',
   }
 
-  onSearch = (search) => {
-    this.setState({ search });
+  onSearch = (e) => {
+    this.setState({ search: e.currentTarget.value });
   }
 
   render() {
@@ -23,7 +23,7 @@ class Articles extends Component {
       : articles.filter(v => v.article_title.includes(search));
 
     if (articles.length && (filterArticles.length === 0)) {
-      message.info(`找不到匹配${search}的文章`);
+      message.info(`找不到匹配${search}的文章`, 1.5);
       filterArticles = articles;
     }
 
@@ -31,7 +31,7 @@ class Articles extends Component {
       <Fragment>
          <Search
           placeholder="搜索标题"
-          onSearch={this.onSearch}
+          onCompositionEnd={this.onSearch}
           style={{ width: '100%', padding: '5px' }}
         />
 
