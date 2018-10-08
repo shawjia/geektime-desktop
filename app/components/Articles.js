@@ -18,12 +18,13 @@ class Articles extends Component {
 
     const { articles, fetchArticle, aid } = this.props;
     const { search } = this.state;
-    const filterArticles = search === ''
+    let filterArticles = search === ''
       ? articles
       : articles.filter(v => v.article_title.includes(search));
 
     if (articles.length && (filterArticles.length === 0)) {
       message.info(`找不到匹配${search}的文章`);
+      filterArticles = articles;
     }
 
     return (
