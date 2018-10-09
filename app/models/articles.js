@@ -8,6 +8,18 @@ const articles = {
   },
 
   reducers: {
+    toggleAsc(state) {
+      const asc = !state.asc;
+
+      store.set('asc', asc);
+
+      return {
+        ...state,
+        asc,
+        articles: state.articles.reverse(),
+      }
+    },
+
     setArticles(state, payload) {
       return {
         ...state,

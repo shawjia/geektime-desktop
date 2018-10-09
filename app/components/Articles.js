@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { List, Avatar, Input, message } from 'antd';
+import { List, Avatar, Input, Icon, message } from 'antd';
 import { connect } from 'react-redux';
 
 const { Search } = Input;
@@ -14,9 +14,15 @@ class Articles extends Component {
     this.setState({ search: e.currentTarget.value });
   }
 
+  onClickSort = () => {
+    const { toggleAsc } = this.props;
+
+    toggleAsc();
+  }
+
   render() {
 
-    const { articles, fetchArticle, aid } = this.props;
+    const { articles, fetchArticle, aid, asc } = this.props;
     const { search } = this.state;
     let filterArticles = search === ''
       ? articles
@@ -27,13 +33,23 @@ class Articles extends Component {
       filterArticles = articles;
     }
 
+    const sortIcon = asc ? 'sort-ascending' : 'sort-descending';
+
     return (
       <Fragment>
-         <Search
-          placeholder="搜索标题"
-          onCompositionEnd={this.onSearch}
-          style={{ width: '100%', padding: '5px' }}
-        />
+        <div>
+          <Search
+            placeholder="搜索标题"
+            onCompositionEnd={this.onSearch}
+            style={{ width: '90%', padding: '5px' }}
+          />
+
+          <Icon type={sortIcon}
+            style={{ width: '10%', cursor: 'pointer' }}
+            theme="outlined"
+            onClick={this.onClickSort} />
+        </div>
+
 
         {filterArticles.length > 0 &&
           <List
@@ -59,13 +75,15 @@ class Articles extends Component {
 
 const mapState = state => ({
   articles: state.articles.articles,
+  asc: state.articles.asc,
   aid: state.article.aid,
 });
 
 const mapDispatch = ({
   article: { fetchArticle, },
+  articles: { toggleAsc, },
 }) => ({
-  fetchArticle
+  fetchArticle, toggleAsc
 });
 
 export default connect(mapState, mapDispatch)(Articles);
