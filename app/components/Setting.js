@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Icon, Modal, Input } from 'antd';
+import { Icon, Modal, Input, message } from 'antd';
 import { connect } from 'react-redux';
 
 const InputGroup = Input.Group;
@@ -15,28 +15,34 @@ class Setting extends Component {
 
   setCountry = (e) => {
     this.setState({
-      country: e.currentTarget.value,
+      country: e.currentTarget.value.trim(),
     });
   }
 
   setPhone = (e) => {
     this.setState({
-      phone: e.currentTarget.value,
+      phone: e.currentTarget.value.trim(),
     });
   }
 
   setPassword = (e) => {
     this.setState({
-      password: e.currentTarget.value,
+      password: e.currentTarget.value.trim(),
     });
   }
 
-  saveSetting = () => {
+  saveSetting = async () => {
     const { country, phone, password } = this.state;
     const { saveSetting, fetchProducts } = this.props;
 
     saveSetting({ country, phone, password });
-    fetchProducts();
+
+    try {
+      await fetchProducts();
+      message.success('登录成功', 5);
+    } catch (err) {
+      message.error('登录失败，请重新设置手机密码', 5);
+    }
   }
 
   render() {
