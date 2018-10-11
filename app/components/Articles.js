@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { List, Avatar, Input, Icon, message } from 'antd';
 import { connect } from 'react-redux';
+import Player from 'react-player';
+import bgm from '../bgm.mp3';
 
 const { Search } = Input;
 
@@ -37,6 +39,19 @@ class Articles extends Component {
 
     return (
       <Fragment>
+
+         <Player
+          height={32}
+          width="100%"
+          controls
+          fileConfig={{
+            attributes: {
+              controlsList: "nodownload"
+            }
+          }}
+          url={bgm}
+        />
+
         <div>
           <Search
             placeholder="搜索标题"
