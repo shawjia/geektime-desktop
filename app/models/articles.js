@@ -31,10 +31,25 @@ const articles = {
   effects: {
     async fetchArticles(cid) {
 
-      const { list } = await getGeektimeClient().articles(cid);
+      const client = getGeektimeClient();
 
-      if (list.length) {
-        this.setArticles(list);
+      const [{ list: newArticles }, { list: audios }] = await Promise.all([
+        client.articles(cid), client.audios(cid)
+      ]);
+
+      if (newArticles.length) {
+        this.setArticles(
+          newArticles.map(v => {
+            const audio = audios.find(({ id }) => id === v.id);
+            const article = v;
+
+            if (audio && audio.audio_download_url) {
+              article.mp3 = audio.audio_download_url;
+            }
+
+            return article;
+          })
+        );
       }
     },
   }

@@ -4,6 +4,8 @@ const article = {
   state: {
     aid: 0,
     article: null,
+    mp3: '',
+    playing: false,
   },
 
   reducers: {
@@ -20,6 +22,22 @@ const article = {
         article: payload,
       }
     },
+
+    playMp3(state, { mp3 }) {
+      return {
+        ...state,
+        playing: true,
+        mp3,
+      }
+    },
+
+    pauseMp3(state) {
+      return {
+        ...state,
+        playing: false,
+      }
+    },
+
   },
 
   effects: {
