@@ -28,6 +28,13 @@ const products = {
 
           return c;
         }),
+        ...res.find(v => v.id === 2).list.map(column => {
+          const c = column;
+
+          c.cid = column.extra.column_id;
+
+          return c;
+        }),
         ...res.find(v => v.id === 3).list.map(column => {
           const c = column;
 
