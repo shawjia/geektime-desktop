@@ -35,6 +35,10 @@ class Article extends Component {
 
         {/* eslint-disable-next-line */}
         <div dangerouslySetInnerHTML={{__html: article.article_content}} />
+
+        <p style={{ fontSize: '0.8rem', textAlign: 'center' }}>
+          版权归极客邦科技所有，未经许可不得转载
+        </p>
       </div>
     )
   }
