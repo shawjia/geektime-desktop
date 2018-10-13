@@ -1,7 +1,18 @@
 .article {
-  padding: 15px 36px;
+  padding: 55px 36px 15px;
   background: white;
   margin-left: 300px;
+}
+
+.article__title {
+  font-size: 1.2rem;
+  position: fixed;
+  top: 0;
+  padding-top: 15px;
+  background: white;
+  z-index: 1000;
+  border-bottom: 1px solid #e8e8e8;
+  width: 100%;
 }
 
 .article img {

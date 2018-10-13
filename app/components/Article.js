@@ -21,7 +21,7 @@ class Article extends Component {
 
     return (
       <div className={styles.article}>
-        <h1>{article.article_title}</h1>
+        <h1 className={styles.article__title}>{article.article_title}</h1>
 
         {article.article_cover !== '' && !hasVideo &&
           <p>

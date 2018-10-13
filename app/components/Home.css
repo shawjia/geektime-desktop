@@ -5,13 +5,16 @@
   left: 200px;
   height: 100%;
   overflow: auto;
-  margin-top: 74px;
+  padding-top: 74px;
 }
 
 .player {
+  border-right:1px solid #e8e8e8;
   position: fixed;
   top: 0;
   width: 300px;
+  z-index: 1000;
+  background: #fafafa;
 }
 
 .articles::-webkit-scrollbar {
