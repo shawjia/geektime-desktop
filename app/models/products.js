@@ -23,7 +23,7 @@ const products = {
         2: 'video-camera',
         3: 'bulb',
       }
-
+      const isDev = process.env.NODE_ENV !== 'production';
       const tmp = (await getGeektimeClient().products())
         .filter(({ id }) => [1,2,3].includes(id))
         .reduce(
@@ -40,7 +40,9 @@ const products = {
         );
 
       if (tmp.length) {
-        this.setProducts(tmp);
+        this.setProducts(tmp.filter(
+          v => isDev ? [42, 116, 48, 130, 73].includes(v.cid) : true
+        ));
       }
     },
   }
