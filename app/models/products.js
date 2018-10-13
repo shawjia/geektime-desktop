@@ -17,32 +17,27 @@ const products = {
   effects: {
     async fetchProducts() {
 
-      const res = await getGeektimeClient().products();
+      // 暂时只处理 专栏1/视频课2/微课3，忽略 其他99
+      const icons = {
+        1: 'book',
+        2: 'video-camera',
+        3: 'bulb',
+      }
 
-      // 暂时只处理 专栏1/微课3，忽略 视频课2/其他99
-      const tmp = [
-        ...res.find(v => v.id === 1).list.map(column => {
-          const c = column;
+      const tmp = (await getGeektimeClient().products())
+        .filter(({ id }) => [1,2,3].includes(id))
+        .reduce(
+          (acc, {list}, index) => {
+            acc.push(...list.map(column => ({
+              ...column,
+              cid: column.extra.column_id,
+              icon: icons[index + 1],
+            })));
 
-          c.cid = column.extra.column_id;
-
-          return c;
-        }),
-        ...res.find(v => v.id === 2).list.map(column => {
-          const c = column;
-
-          c.cid = column.extra.column_id;
-
-          return c;
-        }),
-        ...res.find(v => v.id === 3).list.map(column => {
-          const c = column;
-
-          c.cid = column.extra.column_id;
-
-          return c;
-        })
-      ];
+            return acc;
+          },
+          []
+        );
 
       if (tmp.length) {
         this.setProducts(tmp);
