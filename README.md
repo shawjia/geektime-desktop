@@ -1,7 +1,7 @@
 # geektime-desktop (极客时间桌面版)
 
 <div align="center">
-  <img src="screenshot.png" alt="geektime-desktop screenshot">
+  <img src="https://user-images.githubusercontent.com/361645/46901859-e2a78300-ceed-11e8-8942-1d26e3eac06d.png" alt="geektime-desktop screenshot">
 </div>
 
 > 下载地址 (for macOS/Windows) <https://git.io/geektime>
