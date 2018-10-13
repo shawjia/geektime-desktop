@@ -1,14 +1,18 @@
-.nav__title {
-  color: white;
-  padding: 10px 0 0 10px;
-}
-
 .nav {
   position: fixed !important;
   left: 0;
   height: 100%;
   overflow: auto;
   background: #001529;
+}
+
+.nav::-webkit-scrollbar {
+  display: none;
+}
+
+.nav__title {
+  color: white;
+  padding: 10px 0 0 10px;
 }
 
 .nav__setting {
