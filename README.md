@@ -4,7 +4,7 @@
   <img src="screenshot.png" alt="geektime-desktop screenshot">
 </div>
 
-> 下载地址 (for macOS/Windows) <https://github.com/shawjia/geektime-desktop/releases/latest>
+> 下载地址 (for macOS/Windows) <https://git.io/geektime>
 
 ## Feature
 
@@ -18,9 +18,9 @@
 - [x] 文章排序 (v1.4.0)
 - [x] 登录提示 (v1.4.0)
 - [x] 音频播放 (v1.5.0)
-- [ ] 视频课支持 (maybe)
-- [ ] 文章样式
+- [x] 视频课支持 (v1.6.0)
 - [ ] 文章笔记 (maybe)
+- [ ] 文章评论 (maybe)
 
 ## FAQ
 
