@@ -48,14 +48,15 @@ class Nav extends Component {
               <MenuItem key={`${column.cid}`} onClick={this.setCid}
                 style={{lineHeight: 1.5, height: '150%'}}
               >
-                <Icon type="book" />
+
+                <Icon type={column.icon} />
                 <span>{column.title}</span>
               </MenuItem>
             )}
           </Menu>
         }
 
-        <Icon type="setting" theme="outlined" className={styles.nav__setting}
+        <Icon type="setting" className={styles.nav__setting}
           onClick={toggleShow} />
 
       </Sider >

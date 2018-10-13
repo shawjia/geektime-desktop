@@ -70,7 +70,6 @@ class Articles extends Component {
 
           <Icon type={sortIcon}
             style={{ width: '10%', cursor: 'pointer' }}
-            theme="outlined"
             onClick={this.onClickSort} />
         </div>
 
@@ -89,13 +88,13 @@ class Articles extends Component {
                 <List.Item.Meta
                   avatar={<Avatar src={item.article_cover} />}
                   title={item.article_title}
-                  style={{ paddingLeft: 10, flex: 10 }}
+                  style={{ paddingLeft: 10, flex: 10, }}
                   />
 
                 {'mp3' in item === true &&
                   <Icon type={ ((item.mp3 === mp3) && playing) ? 'pause-circle' : 'play-circle' }
                     onClick={() => this.toggleMusic(item.mp3) }
-                    style={{ fontSize: 28, cursor: 'pointer' }} />
+                    style={{ fontSize: 28, cursor: 'pointer', margin: 'auto 0' }} />
                 }
 
               </List.Item>
