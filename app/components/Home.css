@@ -5,6 +5,13 @@
   left: 200px;
   height: 100%;
   overflow: auto;
+  margin-top: 74px;
+}
+
+.player {
+  position: fixed;
+  top: 0;
+  width: 300px;
 }
 
 .articles::-webkit-scrollbar {

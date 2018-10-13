@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import Player from 'react-player';
 import bgm from '../bgm.mp3';
 
+import styles from './Home.css';
+
 const { Search } = Input;
 
 class Articles extends Component {
@@ -48,31 +50,32 @@ class Articles extends Component {
     return (
       <Fragment>
 
-         <Player
-          playing={playing}
-          height={32}
-          width="100%"
-          controls
-          fileConfig={{
-            attributes: {
-              controlsList: "nodownload"
-            }
-          }}
-          url={mp3 || bgm}
-        />
-
-        <div>
-          <Search
-            placeholder="搜索标题"
-            onCompositionEnd={this.onSearch}
-            style={{ width: '90%', padding: '5px' }}
+        <div className={styles.player}>
+          <Player
+            playing={playing}
+            height={32}
+            width="100%"
+            controls
+            fileConfig={{
+              attributes: {
+                controlsList: "nodownload"
+              }
+            }}
+            url={mp3 || bgm}
           />
 
-          <Icon type={sortIcon}
-            style={{ width: '10%', cursor: 'pointer' }}
-            onClick={this.onClickSort} />
-        </div>
+          <div>
+            <Search
+              placeholder="搜索标题"
+              onCompositionEnd={this.onSearch}
+              style={{ width: '90%', padding: '5px' }}
+            />
 
+            <Icon type={sortIcon}
+              style={{ width: '10%', cursor: 'pointer' }}
+              onClick={this.onClickSort} />
+          </div>
+        </div>
 
         {filterArticles.length > 0 &&
           <List
