@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Icon, Modal, Input, message } from 'antd';
 import { connect } from 'react-redux';
+import { version } from '../package.json';
 
 const InputGroup = Input.Group;
 const GRAY = 'rgba(0,0,0,.25)';
+const title = `设置 (v${version})`;
 
 class Setting extends Component {
   state = {
@@ -55,7 +57,7 @@ class Setting extends Component {
     return (
       <Modal
         visible
-        title="设置"
+        title={title}
         okText="保存"
         cancelText="关闭"
         onCancel={toggleShow}

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Layout } from 'antd';
+import { version } from '../package.json';
+
 import Nav from './Nav';
 import Setting from './Setting';
 import Articles from './Articles';
@@ -10,6 +12,10 @@ import styles from './Home.css';
 const { Content, Sider } = Layout;
 
 export default class Home extends Component {
+
+  componentDidMount() {
+    document.title = `Geektime Desktop (v${version})`;
+  }
 
   render() {
     return (
