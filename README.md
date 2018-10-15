@@ -1,7 +1,7 @@
 # geektime-desktop (极客时间桌面版)
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/361645/46902863-222a9b00-ceff-11e8-8044-803f7e390723.png" alt="geektime-desktop screenshot">
+  <img width="140" alt="geektime desktop" src="https://user-images.githubusercontent.com/361645/46984209-aacf5400-d116-11e8-8350-98bdc55ddca7.png">
 </div>
 
 > 下载地址 (for macOS/Windows) <https://git.io/geektime>
@@ -59,3 +59,7 @@
 8. 我还是不放心。。。
 
     > 88
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/361645/46902863-222a9b00-ceff-11e8-8044-803f7e390723.png" alt="geektime-desktop screenshot">
+</div>
