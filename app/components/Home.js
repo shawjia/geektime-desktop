@@ -14,7 +14,7 @@ const { Content, Sider } = Layout;
 export default class Home extends Component {
 
   componentDidMount() {
-    document.title = `Geektime Desktop (v${version})`;
+    document.title = `GeekTime Desktop (v${version})`;
   }
 
   render() {
