@@ -5,6 +5,7 @@ const article = {
     aid: 0,
     article: null,
     mp3: '',
+    comments: [],
     playing: false,
   },
 
@@ -21,6 +22,10 @@ const article = {
         ...state,
         article: payload,
       }
+    },
+
+    setComments(state, comments) {
+      return { ...state, comments };
     },
 
     playMp3(state, { mp3 }) {
@@ -44,9 +49,13 @@ const article = {
     async fetchArticle(id) {
       this.setAid(id);
 
-      const res = await getGeektimeClient().article(id);
+      const client = getGeektimeClient();
 
-      this.setArticle(res);
+      this.setArticle(await client.article(id));
+
+      const { list: comments } = await client.comments(id, 1000);
+
+      this.setComments(comments);
     },
   }
 }
