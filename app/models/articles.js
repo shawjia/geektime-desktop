@@ -1,10 +1,13 @@
+import { message } from 'antd';
 import { getGeektimeClient, getStore } from '../utils/index';
 
 const store = getStore();
 const articles = {
   state: {
     articles: [],
+    filterArticles: [],
     asc: store.get('asc', true),
+    search: '',
   },
 
   reducers: {
@@ -20,10 +23,32 @@ const articles = {
       }
     },
 
-    setArticles(state, payload) {
+    setSearch(state, payload) {
+      const search = payload.trim();
+      const { articles: all } = state;
+
+      let filterArticles = search === ''
+        ? all
+        : all.filter(v => v.article_title.includes(search));
+
+      if (all.length && (filterArticles.length === 0)) {
+        message.info(`找不到匹配${search}的文章`, 1.5);
+        filterArticles = all;
+      }
+
       return {
         ...state,
-        articles: state.asc ? payload.reverse() : payload,
+        filterArticles,
+        search
+      };
+    },
+
+    setArticles(state, payload) {
+      const all = state.asc ? payload.reverse() : payload;
+      return {
+        ...state,
+        articles: all,
+        filterArticles: all,
       }
     },
   },

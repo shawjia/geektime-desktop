@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { List, Avatar, Input, Icon, message } from 'antd';
+import { List, Avatar, Input, Icon } from 'antd';
 import { connect } from 'react-redux';
 import Player from 'react-player';
 import bgm from '../bgm.mp3';
@@ -10,14 +10,10 @@ const { Search } = Input;
 
 class Articles extends Component {
 
-  state = {
-    search: '',
-  }
-
   onSearch = (v) => {
-    this.setState({
-      search: typeof v === 'string' ? v : v.currentTarget.value
-    });
+    const { setSearch } = this.props;
+
+    setSearch( typeof v === 'string' ? v : v.currentTarget.value );
   }
 
   onClickSort = () => {
@@ -36,16 +32,7 @@ class Articles extends Component {
 
   render() {
 
-    const { articles, fetchArticle, aid, asc, playing, mp3 } = this.props;
-    const { search } = this.state;
-    let filterArticles = search === ''
-      ? articles
-      : articles.filter(v => v.article_title.includes(search));
-
-    if (articles.length && (filterArticles.length === 0)) {
-      message.info(`找不到匹配${search}的文章`, 1.5);
-      filterArticles = articles;
-    }
+    const { filterArticles, fetchArticle, aid, asc, playing, mp3 } = this.props;
 
     const sortIcon = asc ? 'sort-ascending' : 'sort-descending';
 
@@ -113,7 +100,7 @@ class Articles extends Component {
 };
 
 const mapState = state => ({
-  articles: state.articles.articles,
+  filterArticles: state.articles.filterArticles,
   asc: state.articles.asc,
   aid: state.article.aid,
   mp3: state.article.mp3,
@@ -122,9 +109,9 @@ const mapState = state => ({
 
 const mapDispatch = ({
   article: { fetchArticle, playMp3, pauseMp3, },
-  articles: { toggleAsc, },
+  articles: { toggleAsc, setSearch, },
 }) => ({
-  fetchArticle, playMp3, pauseMp3, toggleAsc,
+  fetchArticle, playMp3, pauseMp3, toggleAsc, setSearch,
 });
 
 export default connect(mapState, mapDispatch)(Articles);
