@@ -14,8 +14,10 @@ class Articles extends Component {
     search: '',
   }
 
-  onSearch = (e) => {
-    this.setState({ search: e.currentTarget.value });
+  onSearch = (v) => {
+    this.setState({
+      search: typeof v === 'string' ? v : v.currentTarget.value
+    });
   }
 
   onClickSort = () => {
@@ -68,6 +70,7 @@ class Articles extends Component {
             <Search
               placeholder="搜索标题"
               onCompositionEnd={this.onSearch}
+              onSearch={this.onSearch}
               style={{ width: '90%', padding: '5px' }}
             />
 
