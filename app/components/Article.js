@@ -46,6 +46,10 @@ function Replies (props) {
 
 class Article extends Component {
 
+  componentDidUpdate() {
+    window.scroll(0, 0);
+  }
+
   render() {
 
     const { article, comments } = this.props;
