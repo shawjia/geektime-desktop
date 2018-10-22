@@ -1,10 +1,8 @@
-# geektime-desktop (极客时间桌面版)
-
 <div align="center">
   <img width="140" alt="geektime desktop" src="https://user-images.githubusercontent.com/361645/46984209-aacf5400-d116-11e8-8350-98bdc55ddca7.png">
 </div>
 
-> 下载地址 (for macOS/Windows) <https://git.io/geektime>
+> 下载地址 (for macOS/Windows/Debian) <https://git.io/geektime>
 
 ## Feature
 
