@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Layout } from 'antd';
+import { ipcRenderer } from 'electron';
+import { connect } from 'react-redux';
+
 import { version } from '../package.json';
 
 import Nav from './Nav';
@@ -11,10 +14,16 @@ import styles from './Home.css';
 
 const { Content, Sider } = Layout;
 
-export default class Home extends Component {
+class Home extends Component {
 
   componentDidMount() {
     document.title = `GeekTime Desktop (v${version})`;
+
+    ipcRenderer.on('show-settings', () => {
+      const { toggleShow } = this.props;
+
+      toggleShow();
+    });
   }
 
   render() {
@@ -37,3 +46,12 @@ export default class Home extends Component {
     );
   }
 }
+
+
+const mapDispatch = ({
+  setting: { toggleShow },
+}) => ({
+  toggleShow,
+});
+
+export default connect(null, mapDispatch)(Home);

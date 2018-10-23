@@ -52,6 +52,14 @@ export default class MenuBuilder {
           selector: 'orderFrontStandardAboutPanel:'
         },
         { type: 'separator' },
+        {
+          label: 'Preferences',
+          accelerator: 'CmdOrCtrl+,',
+          click: () => {
+            this.mainWindow.webContents.send('show-settings');
+          }
+        },
+        { type: 'separator' },
         { label: 'Services', submenu: [] },
         { type: 'separator' },
         {
