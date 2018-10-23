@@ -109,6 +109,9 @@
     "react"
   ],
   "settings": {
+    "polyfills": [
+      "promises"
+    ],
     "import/resolver": {
       "webpack": {
         "config": "webpack.config.eslint.js"
