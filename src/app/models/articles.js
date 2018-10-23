@@ -1,6 +1,7 @@
 import { message } from 'antd';
 import { getGeektimeClient, getStore } from '../utils/index';
 
+const cache = {};
 const store = getStore();
 const articles = {
   state: {
@@ -56,6 +57,11 @@ const articles = {
   effects: {
     async fetchArticles(cid) {
 
+      if (cache[cid]) {
+        this.setArticles(cache[cid]);
+        return;
+      }
+
       const client = getGeektimeClient();
 
       const [{ list: newArticles }, { list: audios }] = await Promise.all([
@@ -63,18 +69,21 @@ const articles = {
       ]);
 
       if (newArticles.length) {
-        this.setArticles(
-          newArticles.map(v => {
-            const audio = audios.find(({ id }) => id === v.id);
-            const article = v;
 
-            if (audio && audio.audio_download_url) {
-              article.mp3 = audio.audio_download_url;
-            }
+        const tmp = newArticles.map(v => {
+          const audio = audios.find(({ id }) => id === v.id);
+          const article = v;
 
-            return article;
-          })
-        );
+          if (audio && audio.audio_download_url) {
+            article.mp3 = audio.audio_download_url;
+          }
+
+          return article;
+        });
+
+        cache[cid] = tmp;
+
+        this.setArticles(tmp);
       }
     },
   }
