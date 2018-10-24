@@ -10,9 +10,7 @@ import Setting from './Setting';
 import Articles from './Articles';
 import Article from './Article';
 
-import styles from './Home.css';
-
-const { Content, Sider } = Layout;
+const { Content } = Layout;
 
 class Home extends Component {
 
@@ -32,9 +30,7 @@ class Home extends Component {
         <Nav />
 
         <Layout style={{ marginLeft: 200 }}>
-          <Sider theme="light" width="300" className={styles.articles}>
-            <Articles />
-          </Sider>
+          <Articles />
           <Content style={{ background: 'white' }}>
             <Article style={{ padding: 10 }}/>
           </Content>

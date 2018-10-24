@@ -1,12 +1,13 @@
-import React, { Component, Fragment } from 'react';
-import { List, Avatar, Input, Icon } from 'antd';
+import React, { Component } from 'react';
+import { List, Avatar, Input, Icon, Layout } from 'antd';
 import { connect } from 'react-redux';
 import Player from 'react-player';
 import bgm from '../bgm.mp3';
 
-import styles from './Home.css';
+import styles from './Articles.css';
 
 const { Search } = Input;
+const { Sider } = Layout;
 
 class Articles extends Component {
 
@@ -37,7 +38,7 @@ class Articles extends Component {
     const sortIcon = asc ? 'sort-ascending' : 'sort-descending';
 
     return (
-      <Fragment>
+      <Sider theme="light" width="300" className={styles.articles}>
 
         <div className={styles.player}>
           <Player
@@ -94,7 +95,7 @@ class Articles extends Component {
             )}
           />
         }
-      </Fragment>
+      </Sider>
     )
   }
 };
