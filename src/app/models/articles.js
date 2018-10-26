@@ -58,7 +58,7 @@ const articles = {
     async fetchArticles(cid) {
 
       if (cache[cid]) {
-        this.setArticles(cache[cid]);
+        this.setArticles(cache[cid].slice(0));
         return;
       }
 
@@ -83,7 +83,7 @@ const articles = {
 
         cache[cid] = tmp;
 
-        this.setArticles(tmp);
+        this.setArticles(tmp.slice(0));
       }
     },
   }
