@@ -16,7 +16,8 @@ function Replies (props) {
 
   return (
     <div>
-      {content}
+      {/* eslint-disable-next-line */}
+      <div dangerouslySetInnerHTML={{__html: content.replace('<br>', '<br />')}} />
 
       {replies.length > 0 &&
         <Fragment>
@@ -32,7 +33,8 @@ function Replies (props) {
                       :
                     </p>
                   }
-                  description={item.content}
+                  // eslint-disable-next-line
+                  description={<div dangerouslySetInnerHTML={{__html: item.content.replace('<br>', '<br />')}} />}
                 />
               </List.Item>
             )}
