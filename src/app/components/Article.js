@@ -73,7 +73,7 @@ class Article extends Component {
         <h1 className={styles.article__title}>{article.article_title}</h1>
 
         {article.article_cover !== '' && !hasVideo &&
-          <p>
+          <p className={styles.article__cover}>
             <img src={article.article_cover} alt="cover"/>
           </p>
         }

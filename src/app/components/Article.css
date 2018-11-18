@@ -15,6 +15,11 @@
   width: 100%;
 }
 
+.article__cover img {
+  max-height: 280px;
+  margin: 0 auto;
+}
+
 .article img {
   max-width: 100%;
   display: block;
