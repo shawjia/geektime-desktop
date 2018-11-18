@@ -8,6 +8,7 @@ import styles from './Articles.css';
 
 const { Search } = Input;
 const { Sider } = Layout;
+const VIEW_FULL = 1; // 三栏模式
 
 class Articles extends Component {
 
@@ -33,12 +34,14 @@ class Articles extends Component {
 
   render() {
 
-    const { filterArticles, fetchArticle, aid, asc, playing, mp3 } = this.props;
+    const { filterArticles, fetchArticle, aid, asc, playing, mp3, viewMode
+    } = this.props;
 
     const sortIcon = asc ? 'sort-ascending' : 'sort-descending';
+    const left = viewMode === VIEW_FULL ? 200: 0;
 
     return (
-      <Sider theme="light" width="300" className={styles.articles}>
+      <Sider theme="light" width="300" className={styles.articles} style={{left}}>
 
         <div className={styles.player}>
           <Player
@@ -106,6 +109,7 @@ const mapState = state => ({
   aid: state.article.aid,
   mp3: state.article.mp3,
   playing: state.article.playing,
+  viewMode: state.setting.viewMode,
 });
 
 const mapDispatch = ({

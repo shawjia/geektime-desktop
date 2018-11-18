@@ -12,25 +12,37 @@ import Article from './Article';
 
 const { Content } = Layout;
 
+const VIEW_FULL = 1; // 三栏模式
+const VIEW_CONTENT = 4; // 单文章模式
+
 class Home extends Component {
 
   componentDidMount() {
     document.title = `GeekTime Desktop (v${version})`;
 
-    ipcRenderer.on('show-settings', () => {
-      const { toggleShow } = this.props;
+    const { toggleShow, toggleMode } = this.props;
 
-      toggleShow();
+    ipcRenderer.on('show-settings', toggleShow);
+
+    ipcRenderer.on('toggle-pannel', (e, mode) => {
+      toggleMode(mode);
     });
   }
 
   render() {
+    const { viewMode } = this.props;
+
+    const showNav = viewMode === VIEW_FULL;
+    const showCatalog = viewMode !== VIEW_CONTENT;
+    const layoutMarginLeft = showNav ? 200 : 0;
+
     return (
       <Layout>
-        <Nav />
+        {showNav && <Nav />}
 
-        <Layout style={{ marginLeft: 200 }}>
-          <Articles />
+        <Layout style={{ marginLeft: layoutMarginLeft }}>
+          {showCatalog && <Articles />}
+
           <Content style={{ background: 'white' }}>
             <Article style={{ padding: 10 }}/>
           </Content>
@@ -43,11 +55,14 @@ class Home extends Component {
   }
 }
 
-
-const mapDispatch = ({
-  setting: { toggleShow },
-}) => ({
-  toggleShow,
+const mapState = state => ({
+  viewMode: state.setting.viewMode,
 });
 
-export default connect(null, mapDispatch)(Home);
+const mapDispatch = ({
+  setting: { toggleShow, toggleMode },
+}) => ({
+  toggleShow, toggleMode
+});
+
+export default connect(mapState, mapDispatch)(Home);

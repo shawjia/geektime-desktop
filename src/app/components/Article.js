@@ -6,7 +6,8 @@ import dayjs from 'dayjs';
 
 import styles from './Article.css';
 
-const dateFormat = 'YYYY-MM-DD'
+const dateFormat = 'YYYY-MM-DD';
+const VIEW_CONTENT = 4; // 单文章模式
 
 function Replies (props) {
   const { comment_content: content } = props;
@@ -54,7 +55,7 @@ class Article extends Component {
 
   render() {
 
-    const { article, comments } = this.props;
+    const { article, comments, viewMode } = this.props;
 
     if (article === null) {
       return null;
@@ -65,8 +66,10 @@ class Article extends Component {
       ? (article.video_media_map.hd || article.video_media_map.sd).url
       : null;
 
+    const marginLeft = viewMode === VIEW_CONTENT ? 0 : 300;
+
     return (
-      <div className={styles.article}>
+      <div className={styles.article} style={{ marginLeft }}>
         <h1 className={styles.article__title}>{article.article_title}</h1>
 
         {article.article_cover !== '' && !hasVideo &&
@@ -116,6 +119,7 @@ class Article extends Component {
 const mapState = state => ({
   article: state.article.article,
   comments: state.article.comments,
+  viewMode: state.setting.viewMode,
 });
 
 export default connect(mapState, null)(Article);

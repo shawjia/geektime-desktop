@@ -1,6 +1,10 @@
 // @flow
 import { app, Menu, shell, BrowserWindow } from 'electron';
 
+const VIEW_FULL = 1; // 三栏模式
+const VIEW_CATALOG = 2; // 两栏模式
+const VIEW_CONTENT = 4; // 单文章模式
+
 export default class MenuBuilder {
   mainWindow: BrowserWindow;
 
@@ -117,6 +121,27 @@ export default class MenuBuilder {
           }
         },
         {
+          label: '切换专栏列表',
+          accelerator: 'CmdOrCtrl+1',
+          click: () => {
+            this.mainWindow.webContents.send('toggle-pannel', VIEW_FULL);
+          }
+        },
+        {
+          label: '切换文章列表',
+          accelerator: 'CmdOrCtrl+2',
+          click: () => {
+            this.mainWindow.webContents.send('toggle-pannel', VIEW_CATALOG);
+          }
+        },
+        {
+          label: '仅显示文章',
+          accelerator: 'CmdOrCtrl+3',
+          click: () => {
+            this.mainWindow.webContents.send('toggle-pannel', VIEW_CONTENT);
+          }
+        },
+        {
           label: 'Toggle Developer Tools',
           accelerator: 'Alt+Command+I',
           click: () => {
@@ -134,7 +159,28 @@ export default class MenuBuilder {
           click: () => {
             this.mainWindow.setFullScreen(!this.mainWindow.isFullScreen());
           }
-        }
+        },
+        {
+          label: '切换专栏列表',
+          accelerator: 'CmdOrCtrl+1',
+          click: () => {
+            this.mainWindow.webContents.send('toggle-pannel', VIEW_FULL);
+          }
+        },
+        {
+          label: '切换文章列表',
+          accelerator: 'CmdOrCtrl+2',
+          click: () => {
+            this.mainWindow.webContents.send('toggle-pannel', VIEW_CATALOG);
+          }
+        },
+        {
+          label: '仅显示文章',
+          accelerator: 'CmdOrCtrl+3',
+          click: () => {
+            this.mainWindow.webContents.send('toggle-pannel', VIEW_CONTENT);
+          }
+        },
       ]
     };
     const subMenuWindow = {
