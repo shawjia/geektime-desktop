@@ -103,42 +103,48 @@ export default class MenuBuilder {
         }
       ]
     };
+
+    const menus = [
+      {
+        label: '仅显示文章',
+        accelerator: 'CmdOrCtrl+1',
+        click: () => {
+          this.mainWindow.webContents.send('toggle-pannel', VIEW_CONTENT);
+        }
+      },
+      {
+        label: '切换双栏模式',
+        accelerator: 'CmdOrCtrl+2',
+        click: () => {
+          this.mainWindow.webContents.send('toggle-pannel', VIEW_CATALOG );
+        }
+      },
+      {
+        label: '切换三栏模式',
+        accelerator: 'CmdOrCtrl+3',
+        click: () => {
+          this.mainWindow.webContents.send('toggle-pannel', VIEW_FULL);
+        }
+      },
+      { type: 'separator' },
+      {
+        label: '切换全屏',
+        accelerator: 'Ctrl+Command+F',
+        click: () => {
+          this.mainWindow.setFullScreen(!this.mainWindow.isFullScreen());
+        }
+      },
+    ];
+
     const subMenuViewDev = {
       label: 'View',
       submenu: [
+        ...menus,
         {
           label: 'Reload',
           accelerator: 'Command+R',
           click: () => {
             this.mainWindow.webContents.reload();
-          }
-        },
-        {
-          label: 'Toggle Full Screen',
-          accelerator: 'Ctrl+Command+F',
-          click: () => {
-            this.mainWindow.setFullScreen(!this.mainWindow.isFullScreen());
-          }
-        },
-        {
-          label: '切换专栏列表',
-          accelerator: 'CmdOrCtrl+1',
-          click: () => {
-            this.mainWindow.webContents.send('toggle-pannel', VIEW_FULL);
-          }
-        },
-        {
-          label: '切换文章列表',
-          accelerator: 'CmdOrCtrl+2',
-          click: () => {
-            this.mainWindow.webContents.send('toggle-pannel', VIEW_CATALOG);
-          }
-        },
-        {
-          label: '仅显示文章',
-          accelerator: 'CmdOrCtrl+3',
-          click: () => {
-            this.mainWindow.webContents.send('toggle-pannel', VIEW_CONTENT);
           }
         },
         {
@@ -152,36 +158,7 @@ export default class MenuBuilder {
     };
     const subMenuViewProd = {
       label: 'View',
-      submenu: [
-        {
-          label: 'Toggle Full Screen',
-          accelerator: 'Ctrl+Command+F',
-          click: () => {
-            this.mainWindow.setFullScreen(!this.mainWindow.isFullScreen());
-          }
-        },
-        {
-          label: '切换专栏列表',
-          accelerator: 'CmdOrCtrl+1',
-          click: () => {
-            this.mainWindow.webContents.send('toggle-pannel', VIEW_FULL);
-          }
-        },
-        {
-          label: '切换文章列表',
-          accelerator: 'CmdOrCtrl+2',
-          click: () => {
-            this.mainWindow.webContents.send('toggle-pannel', VIEW_CATALOG);
-          }
-        },
-        {
-          label: '仅显示文章',
-          accelerator: 'CmdOrCtrl+3',
-          click: () => {
-            this.mainWindow.webContents.send('toggle-pannel', VIEW_CONTENT);
-          }
-        },
-      ]
+      submenu: menus,
     };
     const subMenuWindow = {
       label: 'Window',

@@ -18,6 +18,7 @@
 - [x] 音频播放 (v1.5.0)
 - [x] 视频课支持 (v1.6.0)
 - [x] 文章评论 (v1.7.0)
+- [x] 多种阅读模式：三栏 / 二栏 / 仅文章 (v1.8.0)
 - [ ] 文章笔记 (maybe)
 
 ## FAQ
@@ -59,5 +60,5 @@
     > 88
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/361645/46902863-222a9b00-ceff-11e8-8044-803f7e390723.png" alt="geektime-desktop screenshot">
+  <img src="https://user-images.githubusercontent.com/361645/48707578-dcb66780-ec3a-11e8-9bdf-37b6c565acb6.gif" alt="geektime-desktop screenshot">
 </div>
