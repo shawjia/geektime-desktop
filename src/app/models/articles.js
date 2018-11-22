@@ -26,11 +26,12 @@ const articles = {
 
     setSearch(state, payload) {
       const search = payload.trim();
+      const keyword = search.toLowerCase();
       const { articles: all } = state;
 
       let filterArticles = search === ''
         ? all
-        : all.filter(v => v.article_title.includes(search));
+        : all.filter(v => v.article_title.toLowerCase().includes(keyword));
 
       if (all.length && (filterArticles.length === 0)) {
         message.info(`找不到匹配${search}的文章`, 1.5);
