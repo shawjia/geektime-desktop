@@ -55,7 +55,9 @@ class Article extends Component {
 
   render() {
 
-    const { article, comments, viewMode } = this.props;
+    const {
+      aid, article, comments, viewMode, filterArticles, fetchArticle,
+    } = this.props;
 
     if (article === null) {
       return null;
@@ -67,6 +69,10 @@ class Article extends Component {
       : null;
 
     const marginLeft = viewMode === VIEW_CONTENT ? 0 : 300;
+
+    const articleIndex = filterArticles.findIndex(({id}) => id === aid);
+    const prev = filterArticles[articleIndex - 1] || null;
+    const next = filterArticles[articleIndex + 1] || null;
 
     return (
       <div className={styles.article} style={{ marginLeft }}>
@@ -89,6 +95,23 @@ class Article extends Component {
           版权归极客邦科技所有，未经许可不得转载
         </p>
 
+        <Divider />
+
+        {prev !== null &&
+          <p>
+            <a onClick={() => fetchArticle(prev.id)}
+              onKeyUp={null} role="button" tabIndex={0}>
+              上一篇: {prev.article_title}
+            </a>
+          </p>
+        }
+
+        {next !== null &&
+          <a onClick={() => fetchArticle(next.id)}
+            onKeyUp={null} role="button" tabIndex={-1}>
+            下一篇: {next.article_title}
+          </a>
+        }
 
         <Divider>精选留言</Divider>
 
@@ -117,9 +140,17 @@ class Article extends Component {
 };
 
 const mapState = state => ({
+  aid: state.article.aid,
   article: state.article.article,
   comments: state.article.comments,
   viewMode: state.setting.viewMode,
+  filterArticles: state.articles.filterArticles,
 });
 
-export default connect(mapState, null)(Article);
+const mapDispatch = ({
+  article: { fetchArticle, },
+}) => ({
+  fetchArticle,
+});
+
+export default connect(mapState, mapDispatch)(Article);
