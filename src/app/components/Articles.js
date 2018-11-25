@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { List, Avatar, Input, Icon, Layout } from 'antd';
 import { connect } from 'react-redux';
 import Player from 'react-player';
-import bgm from '../bgm.mp3';
 
 import styles from './Articles.css';
 
 const { Search } = Input;
 const { Sider } = Layout;
 const VIEW_FULL = 1; // 三栏模式
+const DEFAULT_AUDIO = 'http://freewhitenoise.com/noise/ocean-waves-at-the-beach/Ocean_Surf_Big.ogg';
 
 class Articles extends Component {
 
@@ -54,7 +54,7 @@ class Articles extends Component {
                 controlsList: "nodownload"
               }
             }}
-            url={mp3 || bgm}
+            url={mp3 || DEFAULT_AUDIO}
           />
 
           <div>
