@@ -134,19 +134,19 @@ export default class MenuBuilder {
           this.mainWindow.setFullScreen(!this.mainWindow.isFullScreen());
         }
       },
+      {
+        label: '重新加载',
+        accelerator: 'CmdOrCtrl+R',
+        click: () => {
+          this.mainWindow.webContents.reload();
+        }
+      },
     ];
 
     const subMenuViewDev = {
       label: 'View',
       submenu: [
         ...menus,
-        {
-          label: 'Reload',
-          accelerator: 'Command+R',
-          click: () => {
-            this.mainWindow.webContents.reload();
-          }
-        },
         {
           label: 'Toggle Developer Tools',
           accelerator: 'Alt+Command+I',
