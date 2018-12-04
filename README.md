@@ -72,5 +72,5 @@
     > 88
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/361645/48707578-dcb66780-ec3a-11e8-9bdf-37b6c565acb6.gif" alt="geektime-desktop screenshot">
+  <img src="https://user-images.githubusercontent.com/361645/49439786-f50eb080-f7fc-11e8-93ea-76a54def1119.gif" alt="geektime-desktop screenshot">
 </div>
