@@ -4,6 +4,17 @@
 
 > 下载地址 (for macOS/Windows/Debian) <https://git.io/geektime>
 
+## 快捷键
+
+| key | desc |
+| :---: | :--------- |
+| ⌘ + 1 | 单文章模式 |
+| ⌘ + 2 | 双栏模式   |
+| ⌘ + 3 | 三栏模式 |
+| ⌘ + r | 重新加载 |
+
+非 macOS 请用 `Ctrl` 键替代 `⌘`
+
 ## Feature
 
 - [x] 账号登录 (v1.0.0)
