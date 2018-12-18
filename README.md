@@ -4,6 +4,9 @@
 
 > 下载地址 (for macOS/Windows/Debian) <https://git.io/geektime>
 
+## 重要提示
+官方已经加上反爬机制，新项目 <https://github.com/shawjia/geektime-macos>，本项目不再维护。
+
 ## 快捷键
 
 | key | desc |
